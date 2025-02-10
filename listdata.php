@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+<h1>Handle List Data </h1>
+
+<form id="myForm">
+    <label><input type="checkbox" name="hobby" value="Reading"> Reading</label><br><br>
+    <label><input type="checkbox" name="hobby" value="Traveling"> Traveling</label><br><br>
+    <label><input type="checkbox" name="hobby" value="Cooking"> Music</label><br><br>
+    <label><input type="checkbox" name="hobby" value="Gaming"> Gaming</label><br><br>
+
+    <button type="button" onclick="getFormData()">Submit</button>
+</form>
+
+
+<h2>Selected Hobbies:</h2>
+<div id="output"></div>
+
+<script>
+    function getFormData() {
+        const form = document.getElementById('myForm');
+        const hobbies = form.querySelectorAll('input[name="hobby"]:checked');
+
+
+        if (hobbies.length > 0) {
+            let selectedHobbies = [];
+            hobbies.forEach(hobby => {
+                selectedHobbies.push(hobby.value);
+            });
+
+            let output = '<ul>';
+
+            selectedHobbies.forEach(hobby => {
+                output += `<li>${hobby}</li>`;
+            });
+
+            output += '</ul>';
+
+
+            document.getElementById('output').innerHTML = output;
+        } else {
+            alert("Please select at least one hobby.");
+        }
+    }
+</script>
+
+</body>
+</html>
+
