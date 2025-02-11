@@ -18,7 +18,7 @@
 
             // Create an XMLHttpRequest to send the form data asynchronously
             var xhr = new XMLHttpRequest();
-            xhr.open('GET', 'submit.php?' + queryString, true);  // URL with query parameters
+            xhr.open('GET', '?' + queryString, true);  // URL with query parameters
 
             // When the request is successful
             xhr.onload = function() {
@@ -45,7 +45,7 @@
 <h2>AJAX Form Submission (GET Method)</h2>
 
 <!-- The form that will trigger the AJAX submission -->
-<form id="myForm" onsubmit="submitForm(event)">
+<form id="myForm" onsubmit="submitForm()">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
 
