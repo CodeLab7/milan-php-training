@@ -1,9 +1,9 @@
 <?php
-$t = date("19");
+$time = 1;
 
-if ($t < "20") {
-    echo "Have a good day!";
+if ($time < "12") {
+    echo "good morning!";
 } else {
-    echo "Have a good night!";
+    echo "good evening!";
 }
 ?>

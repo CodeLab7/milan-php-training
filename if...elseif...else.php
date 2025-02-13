@@ -1,11 +1,11 @@
  <?php
-$t = ("24");
+$time = 13;
 
-if ($t < "10") {
-    echo "Have a good morning!";
-} elseif ($t < "20") {
-    echo "Have a good day!";
+if ($time < "12") {
+    echo " good morning!";
+} elseif ($time < "18") {
+    echo " good afternoon!";
 } else {
-    echo "Have a good night!";
+    echo "good evening!";
 }
 ?>
