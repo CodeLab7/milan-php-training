@@ -1,5 +1,5 @@
-. <?php
-$t = date("25");
+ <?php
+$t = ("24");
 
 if ($t < "10") {
     echo "Have a good morning!";
