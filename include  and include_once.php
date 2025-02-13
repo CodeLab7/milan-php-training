@@ -3,9 +3,13 @@
 <body>
 
 <h1> welcome to new page</h1>
-<p>some text.</p>
-<p>some time.</p>
-<?php include 'script.php'?>
+
+<?php require 'script.php';
+{
+
+    echo "how are you!";
+}
+?>
 </body>
 </html>
 
