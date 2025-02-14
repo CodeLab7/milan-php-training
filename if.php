@@ -68,16 +68,16 @@ if ($x < $y) {
 <h7> >= greater than or equal to </h7>
 <?php
 $x = 200;
-$y = 200;
+$y = 180;
 
 if ($x >= $y){
     echo "$x is greater than or equal to $y";
 }
 ?>
 
-<h8> >= less than or equal to </h8>
+<h8> <= less than or equal to </h8>
 <?php
-$x = 200;
+$x = 150;
 $y = 200;
 
 if ($x <= $y){
@@ -88,3 +88,40 @@ if ($x <= $y){
 </body>
 </html>
 
+<h9>&& operator</h9>
+<?php
+$x = 100;
+$y = 50;
+
+if($x == 100 && $y == 50) {
+	echo "helo word!";
+}
+?>
+
+<h10>or || operator</h10>
+<?php
+$x = 50;
+$y = 10;
+
+if($x == 50 or $y == 10) {
+	echo "helo word!";
+}
+?>
+
+<h11>xor operator</h11>
+<?php
+$x = 50;
+$y = 10;
+
+if($x == 50 xor $y == 5) {
+	echo "helo word!";
+}
+?>
+
+<h12>! not operator condition in not true</h12>
+<?php
+$x = 40;
+
+if (!($x = 30));
+echo "hello word";
+?>
