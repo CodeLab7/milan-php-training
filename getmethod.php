@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html>
 <body>
-<form action="getmethod.php" method="GET">
-    Name: <input type="text" name="name">
-    Email: <input type="text" name="email">
-    <input type="submit">
+<form>
+    <form action="getmethod.php" method="GET">
+        Name: <input type="text" name="name">
+        Email: <input type="text" name="email">
+        <input type="submit">
+    </form>
+
 </form>
 <?php
 if (isset($_GET['name']) && isset($_GET['email'])) {
