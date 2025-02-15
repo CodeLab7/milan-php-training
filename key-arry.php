@@ -2,34 +2,34 @@
 <html>
 <body>
 
-<-- key array -->
+<!-- key array -->
 <?php
 $number = [
-	"milan" => "12",
-	"parth" => "13",
-	"zeel"  => "14"
+	"12" => "milan",
+	"13" => "parth",
+	"14"  => "zeel"
 ];
 
-echo "this name " . $number['milan'] . ".";
+echo "this name " . $number['12'] . "<br>";
 ?>
-<-- index array -->
+<!-- index array -->
 <?php
 $name = [
 	"milan",
 	"jeel",
 	"parth"
 ];
-echo "name" . $name[0] . ".";
+echo "name" . $name[2] . "<br>";
 ?>
 
-<-- simple array -->
+<!-- simple array -->
 <?php
-$name = [
-	"milan",
-	"jeel",
-	"parth"
-];
-var_dump($name);
+$name = array("milan","jeel","parth");
+
+echo $name[0];
+echo $name[1];
+echo $name[2];
+
 ?>
 </html>
 </body>
