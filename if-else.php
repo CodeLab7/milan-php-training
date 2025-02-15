@@ -8,7 +8,7 @@ if ($time < "12") {
 
 ?>
 
-<-- sort if..else -->
+<!-- sort if..else -->
 <?php
 $a = 10;
 $b = $a < 13 ? "hy" : "hello" ;
@@ -16,7 +16,7 @@ $b = $a < 13 ? "hy" : "hello" ;
 echo $b;
 ?>
 
-<-- nsted if -->
+<!-- nsted if -->
 <?php
 $age = 13;
 
