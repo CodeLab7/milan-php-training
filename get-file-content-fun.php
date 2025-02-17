@@ -7,7 +7,7 @@ if($content === false) {
 }
 ?>
 
-// example 2//
+<!-- example 2 -->
 
 <!DOCTYPE html>
 <html lang="ln">
