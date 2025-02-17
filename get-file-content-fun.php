@@ -1,7 +1,7 @@
 <?php
-$content = file_get_contents('script.php');
+$content = file_get_contents( "script.php");
 if($content === false) {
-    echo "error fatching in url";
+    echo "error reading the file";
 }else{
     echo $content;
 }
@@ -12,6 +12,7 @@ if($content === false) {
 <!DOCTYPE html>
 <html lang="ln">
 <head>
+    <meta charset="UTF-8">
     <title>upload file </title>
 </head>
 <body>
@@ -30,19 +31,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'post'&& isset($_FILES['filetoupload'])){
          // Get the temporary file path
         $tmpName = $_FILES['filetoupload']['tmp_name'];
         // Read the file contents
-
         $filecontents = file_get_contents($tmpName);
 
         if ($filecontents === false){
             echo "error reading the file";
         }else{
-            echo "file contents\2";
+            echo "file contents";
         }
     }else{
         echo "file uploading error";
     }
-}else{
-    echo "file not uploaded";
 }
 
 ?>
