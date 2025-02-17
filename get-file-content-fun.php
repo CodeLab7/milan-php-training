@@ -1,5 +1,5 @@
 <?php
-$content = file_get_contents( "script.php");
+$content = file_get_contents('script.php');
 if($content === false) {
     echo "error reading the file";
 }else{
@@ -9,10 +9,9 @@ if($content === false) {
 
 <!-- example 2 -->
 
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ln">
 <head>
-    <meta charset="UTF-8">
     <title>upload file </title>
 </head>
 <body>
@@ -31,16 +30,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'post'&& isset($_FILES['filetoupload'])){
          // Get the temporary file path
         $tmpName = $_FILES['filetoupload']['tmp_name'];
         // Read the file contents
+
         $filecontents = file_get_contents($tmpName);
 
         if ($filecontents === false){
             echo "error reading the file";
         }else{
-            echo "file contents";
+            echo "file contents\n";
         }
     }else{
         echo "file uploading error";
     }
+
 }
 
 ?>
