@@ -21,4 +21,5 @@ do {
 	echo $i != 6  . "<br>";;
 } while($i != 6);
 
+// output: 1 1 1 1 1
 ?>
