@@ -3,5 +3,5 @@ $greet = function($name){
     echo "Hello , $name";
 };
 
-$greet("Milan");
+$greet("Milan Patel");
 ?>
