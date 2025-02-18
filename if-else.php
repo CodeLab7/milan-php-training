@@ -1,34 +1,25 @@
-<?php
-$time = 1;
-if ($time < "12") {
-    echo "good morning!";
-} else {
-    echo "good evening!";
-}
-
-?>
-
 <!-- sort if..else -->
 <?php
-$a = 10;
-$b = $a < 13 ? "hy" : "hello" ;
+$a = random_int(1, 20);
+
+$b = $a < 13
+    ? "hy <br>"
+    : "hello <br>" ;
 
 echo $b;
 ?>
 
-<!-- nsted if -->
+<!-- nested if -->
 <?php
-$age = 13;
+$age = random_int(1, 20);
 
 if ($age < 12) {
-    echo "You are a child.";
+    echo "You are a child. your age is $age";
 } else {
     if ($age >= 13 && $age <= 19) {
-        echo "You are a teenager.";
+        echo "You are a teenager. your age is $age";
     } else {
-        echo "You are an adult.";
+        echo "You are an adult. your age is $age";
     }
 }
-?>
-
 ?>

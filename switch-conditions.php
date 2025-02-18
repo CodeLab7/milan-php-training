@@ -1,17 +1,17 @@
 <?php
-$favcolor = "pink";
+$favcolor = random_int(1, 5);
 
 switch ($favcolor) {
-    case "red":
+    case 1:
         echo "Your favorite color is red!";
         break;
-    case "blue":
+    case 2:
         echo "Your favorite color is blue!";
         break;
-    case "green":
-        echo "Your favorite color is green!";
+    case 3:
+        echo "Your favorite color is green! ";
         break;
     default:
-        echo "Not favorite colour";
+        echo "Not favorite colour color is $favcolor";
 }
 ?>

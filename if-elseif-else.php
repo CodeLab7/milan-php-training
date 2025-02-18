@@ -1,11 +1,11 @@
  <?php
-$time = 13;
+$time = random_int(1, 24);
 
-if ($time < "12") {
-    echo " good morning!";
-} elseif ($time < "18") {
-    echo " good afternoon!";
+if ($time <= 12) {
+    echo " good morning! time is $time";
+} elseif ($time > 12 && $time <= 18) {
+    echo " good afternoon! time is $time";
 } else {
-    echo "good evening!";
+    echo "good evening! time is $time";
 }
 ?>
