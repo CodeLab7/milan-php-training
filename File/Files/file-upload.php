@@ -11,7 +11,7 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $file = $_FILES['file'];
-    $uploadDirectory = 'D:\milan-php-training\\';
+    $uploadDirectory = 'D:\code\milan-php-training\File\\';
     $uploadPath = $uploadDirectory . basename($file['name']);
     $uploadSuccess = move_uploaded_file($file['tmp_name'], $uploadPath);
 
