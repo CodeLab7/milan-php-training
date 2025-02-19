@@ -4,7 +4,7 @@
  * Simple example to print 10 Numbers using do-while loop
  * Output: 1 2 3 4 5 6 7 8 9 10
  */
-
+// output: 1 2 3 4 5 6 7 8 9 10 -->
 $i = 1;
 do {
     echo $i . "<br>";

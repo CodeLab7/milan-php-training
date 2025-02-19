@@ -1,3 +1,8 @@
+<!--
+* Simple example to print 3 case using swirch condition
+* Output:Not favorite colour color is 5
+-->
+
 <?php
 $favcolor = random_int(1, 5);
 
