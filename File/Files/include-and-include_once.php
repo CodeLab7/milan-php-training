@@ -1,15 +1,18 @@
+<h1>include and include_once</h1>
+<!-- output: i have Abc 123
+            error
+            how are you! -->
+
 <!DOCTYPE html>
 <html>
 <body>
 
-<h1> welcome to new page</h1>
-
 <?php include('script.php') ;
 {
 
-    echo "<br>how are you!";
+    echo "i have $name $number";
 }
-include_once  ('script.php') ;
+include_once  ('no script.php') ;
 {
 
     echo "<br>how are you!";
@@ -18,4 +21,19 @@ include_once  ('script.php') ;
 </body>
 </html>
 
+<h2>require and require_once</h2>
+<!-- output :i have Abc 123
+             error
+             error!  -->
+<?php
+require ('script.php');
+{
+    echo "i have $name $number";
+}
+require_once ('no script.php');
+{
+    echo "<br>how are you!";
+}
+
+?>
 

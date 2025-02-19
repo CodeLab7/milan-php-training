@@ -4,7 +4,10 @@
 
 
 <?php
-echo "Hello from!";
+$name='Abc';
+$number='123';
+echo "$name $number"
+
 ?>
 
 </body>
