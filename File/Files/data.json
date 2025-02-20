@@ -1,17 +1,22 @@
 [
     {
         "Name": "Milan",
-        "Age": "21",
-        "Gender": "Male"
+        "Mobile Number": "6353479999",
+        "City": "Gondal"
     },
     {
         "Name": "Mihir",
-        "Age": "22",
-        "Gender": "Male"
+        "Mobile Number": "6359478865",
+        "City": "Rajkot"
     },
     {
-        "Name": "kalpesh",
-        "Age": "21",
-        "Gender": "Male"
+        "Name": "Ronak",
+        "Mobile Number": "9909225578",
+        "City": "Ahmedabad"
+    },
+    {
+        "Name": "Hemal",
+        "Mobile Number": "1234568902",
+        "City": "Amreli"
     }
 ]

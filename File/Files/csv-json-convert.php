@@ -1,6 +1,6 @@
 
 
-<!-- csv file to json convert
+<!-- csv file to json convert -->
 
 <?php
 $fp = fopen('data.csv','r');
