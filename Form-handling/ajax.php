@@ -1,7 +1,10 @@
 <?php
 if (isset($_GET['name']) && isset($_GET['email'])) {
-    $name = htmlspecialchars($_GET['name']);
-    $email = htmlspecialchars($_GET['email']);
+    $name = $_GET['name'];
+    $email = $_GET['email'];
+
+    echo $name . "<br>";
+    echo $email;
 } else {
     echo "Please provide both name and email.";
 }
@@ -14,17 +17,24 @@ if (isset($_GET['name']) && isset($_GET['email'])) {
 
         function submitForm(event) {
             event.preventDefault();
-            // Collect form data
-            var name = document.getElementById('name').value;
-            var email = document.getElementById('email').value;
+
+            let name = document.getElementById('name').value;
+            let email = document.getElementById('email').value;
+
             // Create the query string to send data via GET method
-            var queryString = "name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
+            let queryString = "name=" + encodeURIComponent(name) + "&email=" + encodeURIComponent(email);
 
             // Create an XMLHttpRequest to send the form data asynchronously
-            var xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
             xhr.open('GET', '?' + queryString, true);
 
             xhr.send();
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('response').innerHTML = 'Form submitted successfully.';
+                }
+            }
         }
     </script>
 </head>
@@ -34,7 +44,7 @@ if (isset($_GET['name']) && isset($_GET['email'])) {
 <h2>AJAX Form Submission</h2>
 
 
-<form id="myForm" onsubmit="submitForm()">
+<form id="myForm" onsubmit="submitForm(event)">
     <label for="name">Name:</label>
     <input type="text" id="name" name="name" required><br><br>
 
