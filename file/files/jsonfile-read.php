@@ -19,4 +19,9 @@ if ($json_data === null){
 print_r($json_data);
 
 ?>
-
+<!-- outout: Array (
+                    [0] => Array ( [Name] => Milan [Mobile Number] => 6353479999 [City] => Gondal )
+                    [1] => Array ( [Name] => Mihir [Mobile Number] => 6359478865 [City] => Rajkot )
+                    [2] => Array ( [Name] => Ronak [Mobile Number] => 9909225578 [City] => Ahmedabad )
+                    [3] => Array ( [Name] => Hemal [Mobile Number] => 1234568902 [City] => Amreli )
+                    )
