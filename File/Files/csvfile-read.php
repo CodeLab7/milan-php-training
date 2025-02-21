@@ -30,6 +30,12 @@ foreach ($data as $row) {
 echo "</table>";
 
 ?>
+<!-- output: Name	Mobile Number	City
+             Milan	6353479999	    Gondal
+             Mihir	6359478865	    Rajkot
+             Ronak	9909225578	    Ahmedabad
+             Hemal	1234568902	    Amreli
+
 
 <!-- Append New Rows in a CSV File Using fputcsv -->
 <!-- output: localhostpath/data.csv file download -->

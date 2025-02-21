@@ -7,7 +7,8 @@
 <html>
 <body>
 
-<?php include('script.php') ;
+<?php
+include('script.php') ;
 {
 
     echo "i have $name $number";

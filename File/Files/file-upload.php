@@ -1,3 +1,5 @@
+<?php phpinfo() ?>
+
 <!DOCTYPE html>
 <html>
 <body>
@@ -9,6 +11,7 @@
 </body>
 </html>
 <?php
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     $file = $_FILES['file'];
     $uploadDirectory = 'D:\code\milan-php-training\File\\';
@@ -20,5 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['file'])) {
     } else {
         echo "Error uploading file";
     }
+
+
 }
 ?>
