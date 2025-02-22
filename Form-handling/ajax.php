@@ -1,30 +1,4 @@
 <?php
-$servername = "localhost";
-$username = "milan_php_training";
-$password = " ";
-
-
-$conn = new mysqli($servername, $username, $password);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-echo "Connected successfully";
-
-$sql = "CREATE TABLE ajaxform(
-id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-name VARCHAR(30) NOT NULL,
-email VARCHAR(50),
-)";
-
-
-if ($conn->query($sql) === TRUE) {
-    echo "Table MyGuests created successfully";
-} else {
-    echo "Error creating table: " . $conn->error;
-}
-
-$conn->close();
-?>
 
 if (isset($_GET['name']) && isset($_GET['email'])) {
     $name = $_GET['name'];
