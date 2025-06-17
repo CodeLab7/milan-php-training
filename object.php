@@ -1,34 +1,38 @@
 <h1>example 1</h1>
 <!-- output :company: Hyundai
-             model: i20  --!>
+             model: i20  -->
 
 <!DOCTYPE html>
 <html>
 <body>
 <?php
-class Car {
-    public $make;
-    public $model;
+// Define a class
+	class Car {
+				public $brand;
+				public $model;
+				public $color;
 
-    function set_make($make){
-        $this ->make = $make;
-    }
-    function get_make(){
-        return $this ->make;
-    }
-    function set_model($model){
-        $this ->model = $model;
-    }
+				// Constructor method
+				public function __construct($brand, $model, $color) {
+				$this->brand = $brand;
+				$this->model = $model;
+				$this->color = $color;
+			}
 
-    function get_model(){
-        return $this ->model;
-    }
+				// Method (behavior)
+				public function startEngine() {
+				return "The {$this->color} {$this->brand} {$this->model}'s engine is running!";
+			}
+	}
 
-}
-$car = new Car();
-$car->set_make('Hyundai');
-$car->set_model('i20');
-echo "make: ". $car->get_make(). "<br>";
-echo "model: ". $car->get_model();
+// Create objects (instances)
+$car1 = new Car("Toyota", "Camry", "Blue");
+$car2 = new Car("Tesla", "Model 3", "Red");
 
+// Access object properties and methods
+echo $car1->startEngine();
+echo "<br>";
+echo $car2->startEngine();
 ?>
+</body>
+</html>
