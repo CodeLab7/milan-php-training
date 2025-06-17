@@ -11,3 +11,5 @@ Route::get('/', function () {
 
  // Route::view('about','about');
  // Route::view('about/{name}','about');
+
+Route::post('/login',[app\Http\controller
