@@ -36,5 +36,3 @@ Route::prefix('users')
 	     Route::delete('/{user}/delete', 'destroy');
 });
 
-// Route Name
-Route::get('user/profile', fn() => 'User Profile')->name('profile');
