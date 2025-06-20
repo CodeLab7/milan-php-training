@@ -1,11 +1,12 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
 	return view('welcome');
 });
-// URL Genration
+// URL Generation
 Route::view('home','home');
 Route::view('user','home');
 
@@ -34,12 +35,12 @@ Route::prefix('users')
      ->controller(UserController::class)
      ->name('user.')
      ->group(function () {
-	     Route::get('/', 'index');
-	     Route::post('/store', 'store');
-	     Route::get('/{user}', 'single');
-	     Route::put('/{user}/update', 'update');
-	     Route::patch('/{user}/update/status', 'updateStatus');
-	     Route::delete('/{user}/delete', 'destroy');
+	     Route::get('/', 'index')->name('index');
+	     Route::post('/store', 'store')->name('store');
+	     Route::get('/{user}', 'single')->name('single');
+	     Route::put('/{user}/update', 'update')->name('update');
+	     Route::patch('/{user}/update/status', 'updateStatus')->name('updateStatus');
+	     Route::delete('/{user}/delete', 'destroy')->name('destroy');
 });
 
 // Route Name
