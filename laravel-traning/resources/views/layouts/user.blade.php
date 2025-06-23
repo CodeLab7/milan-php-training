@@ -100,7 +100,6 @@
 			flex: 1;
 			padding: 2rem;
 			background-color: #f8f9fa;
-			display: flex;
 			flex-direction: column;
 			justify-content: center;
 			align-items: center;
@@ -153,7 +152,7 @@
 		</div>
 	</main>
 	<div class="footer">
-		<p>Footer</p>
+		<p>@ {{now()->year}} Copyrights reserved</p>
 	</div>
 </div>
 </body>
