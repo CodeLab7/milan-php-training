@@ -14,12 +14,6 @@
 			font-family: Arial, sans-serif;
 		}
 
-		#app-container {
-			display: flex;
-			flex-direction: column;
-			min-height: 100vh;
-		}
-
 		header {
 			background-color: #343a40;
 			color: white;
@@ -60,19 +54,10 @@
 		aside {
 			width: 250px;
 			height: 800px;
-			padding: 3rem;
 			background-color: #e9ecef;
 			border-left: 1px solid #dee2e6;
 		}
 
-		aside ul {
-			list-style: none;
-			padding: 0;
-		}
-
-		aside li {
-			margin-bottom: 0.5rem;
-		}
 
 		aside a {
 			color: #495057;
@@ -104,26 +89,6 @@
 			justify-content: center;
 			align-items: center;
 		}
-
-		/* Active link styling */
-		.active {
-			color: white !important;
-			font-weight: bold;
-		}
-
-		/* Responsive adjustments */
-		@media (max-width: 768px) {
-			.main-content {
-				flex-direction: column;
-			}
-
-			aside {
-				width: 100%;
-				border-left: none;
-				border-top: 1px solid #dee2e6;
-				order: -1;
-			}
-		}
 	</style>
 
 </head>
@@ -139,11 +104,9 @@
 	</nav>
 	<main>
 		<div class="main-content">
-			<aside>
-				<ul>
-					<li><a href="/">Home</a></li>
-					<li><a href="/">About</a></li>
-					<li><a href="/">Post</a></li>
+			<aside class="py-2 px-4">
+				<ul class="p-0  list-unstyled">
+					<li class="mb-2"><a href="{{route('user.index')}}">Users</a></li>
 				</ul>
 			</aside>
 			<div class="section">

@@ -3,15 +3,7 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/index', function () {
-	return view('index');
-});
-Route::get('/about', function () {
-	return view('about');
-});
-Route::get('/post', function () {
-	return view('post');
-});
+
 
 // URL Generation
  Route::view('home','home');
@@ -38,11 +30,11 @@ Route::patch('/users/{id}/status', [UserController::class, 'updateStatus']);
 Route::delete('/users/{id}', [UserController::class, 'destroy']);*/
 
 // prefix group example
-Route::prefix('user')
+Route::prefix('users')
      ->controller(UserController::class)
      ->name('user.')
      ->group(function () {
-	     Route::get('/list', 'index')->name('index');
+	     Route::get('/', 'index')->name('index');
 	     Route::post('/store', 'store')->name('store');
 	     Route::get('/{user}', 'single')->name('single');
 	     Route::put('/{user}/update', 'update')->name('update');
