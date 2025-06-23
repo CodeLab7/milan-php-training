@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>User Layout</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+			font-family: Arial, sans-serif;
+		}
+
+		#app-container {
+			display: flex;
+			flex-direction: column;
+			min-height: 100vh;
+		}
+
+		header {
+			background-color: #343a40;
+			color: white;
+			padding: 1rem;
+			text-align: center;
+		}
+
+		nav {
+			background-color: #2c3e50;
+			padding: 0.5rem 1rem;
+			display: flex;
+			gap: 1rem;
+		}
+
+		nav a {
+			color: rgba(255, 255, 255, 0.8);
+			text-decoration: none;
+			padding: 0.5rem 1rem;
+			transition: all 0.3s;
+		}
+
+		nav a:hover {
+			color: white;
+			background-color: rgba(255, 255, 255, 0.1);
+		}
+
+		.main-content {
+			display: flex;
+			flex: 1;
+		}
+
+		article {
+			flex: 1;
+			padding: 2rem;
+			background-color: #f8f9fa;
+		}
+
+		aside {
+			width: 250px;
+			height: 800px;
+			padding: 3rem;
+			background-color: #e9ecef;
+			border-left: 1px solid #dee2e6;
+		}
+
+		aside ul {
+			list-style: none;
+			padding: 0;
+		}
+
+		aside li {
+			margin-bottom: 0.5rem;
+		}
+
+		aside a {
+			color: #495057;
+			text-decoration: none;
+			display: block;
+			padding: 0.5rem;
+		}
+
+		aside a:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+		}
+
+		.footer {
+			position: fixed;
+			left: 0;
+			padding: 10px;
+			bottom: 0;
+			width: 100%;
+			background-color: #2c3e50;
+			color: white;
+			text-align: center;
+		}
+
+		.section {
+			flex: 1;
+			padding: 2rem;
+			background-color: #f8f9fa;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		/* Active link styling */
+		.active {
+			color: white !important;
+			font-weight: bold;
+		}
+
+		/* Responsive adjustments */
+		@media (max-width: 768px) {
+			.main-content {
+				flex-direction: column;
+			}
+
+			aside {
+				width: 100%;
+				border-left: none;
+				border-top: 1px solid #dee2e6;
+				order: -1;
+			}
+		}
+	</style>
+
+</head>
+<body>
+<div id="wrapper">
+	<header>
+		<h1>User Layout</h1>
+	</header>
+	<nav>
+		<a href="">Home</a>
+		<a href="">About</a>
+		<a href="">Post</a>
+	</nav>
+	<main>
+		<div class="main-content">
+			<aside>
+				<ul>
+					<li><a href="/">Home</a></li>
+					<li><a href="/">About</a></li>
+					<li><a href="/">Post</a></li>
+				</ul>
+			</aside>
+			<div class="section">
+				@yield('content')
+			</div>
+		</div>
+	</main>
+	<div class="footer">
+		<p>Footer</p>
+	</div>
+</div>
+</body>
+</html>

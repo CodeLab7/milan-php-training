@@ -7,7 +7,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller {
 
 	public function index() {
-		// Logic to retrieve and return all users
-		return view('home');
+		return view('user.index');
 	}
+
+
 }
