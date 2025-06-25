@@ -3,17 +3,16 @@
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-	return view('welcome');
-});
+
+
 // URL Generation
-Route::view('home','home');
-Route::view('user','home');
+ Route::view('home','home');
+ Route::view('user','home');
 
-Route::view('about','about');
-Route::view('about/{name}','about');
+ Route::view('about','about');
+ Route::view('about/{name}','about');
 
-// Open the Users page to view all users.
+/*// Open the Users page to view all users.
 Route::get('/users', [UserController::class, 'index']);
 //Show single user
 Route::get('/users/{id}', [UserController::class, 'show']);
@@ -28,7 +27,7 @@ Route::put('/users/{id}', [UserController::class, 'update']);
 Route::patch('/users/{id}/status', [UserController::class, 'updateStatus']);
 
 //Permanently remove a user.
-Route::delete('/users/{id}', [UserController::class, 'destroy']);
+Route::delete('/users/{id}', [UserController::class, 'destroy']);*/
 
 // prefix group example
 Route::prefix('users')
