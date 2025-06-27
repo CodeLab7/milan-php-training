@@ -6,9 +6,23 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
 
+
+	public function single($id) {
+		return view('user.single', ['id' => $id]);
+	}
+
 	public function index() {
 		return view('user.index');
 	}
 
+	public function store(Request $request) {
+		 dd($request->all());
+		$request->validate([
+			'username'  => 'required',
+			'email'     => 'required|email',
+			'phone_no'  => 'required|numeric',
+			'password'  => 'required',
+		]);
 
+	}
 }

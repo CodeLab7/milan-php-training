@@ -106,6 +106,7 @@
 		<div class="main-content">
 			<aside class="py-2 px-4">
 				<ul class="p-0  list-unstyled">
+					<li class="mb-2"><a href="{{route('dashboard')}}">Dashboard</a></li>
 					<li class="mb-2"><a href="{{route('user.index')}}">Users</a></li>
 				</ul>
 			</aside>
