@@ -8,7 +8,7 @@ class UserController extends Controller {
 
 
 	public function single($id) {
-		return view('user.single', ['id' => $id]);
+		return view('user.single', ['$user' => $id]);
 	}
 
 	public function index() {

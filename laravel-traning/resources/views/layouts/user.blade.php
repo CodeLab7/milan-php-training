@@ -7,7 +7,7 @@
 	<title>@yield('title')</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="{{ 'asset/css/custom.css' }}">
-
+	@stack('styles')
 </head>
 <body>
 <div id="wrapper">
@@ -36,5 +36,6 @@
 		<p>@ {{now()->year}} Copyrights reserved</p>
 	</div>
 </div>
+@stack('scripts')
 </body>
 </html>
