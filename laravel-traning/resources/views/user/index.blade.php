@@ -28,7 +28,9 @@
 							name="username"
 							label="Username"
 							placeholder="Enter username"
-					/>
+					>
+						<small class="text-muted">Your username must be unique.</small>
+					</x-form.input>
 
 					<x-form.input
 							type="text"
