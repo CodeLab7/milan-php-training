@@ -13,7 +13,7 @@ Route::prefix('users')
      ->group(function () {
 	     Route::get('/', 'index')->name('index');
 	     Route::post('/store', 'store')->name('store');
-	     Route::get('/{user}', 'single')->name('single');
+	     Route::get('/create/form', 'create')->name('create');
 	     Route::put('/{user}/update', 'update')->name('update');
 	     Route::patch('/{user}/update/status', 'updateStatus')->name('updateStatus');
 	     Route::delete('/{user}/delete', 'destroy')->name('destroy');
