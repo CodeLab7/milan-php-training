@@ -11,13 +11,14 @@ class UserSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+	//seeding
     public function run(): void
     {
 
 	    User::create([
-		    'name' => 'rohan ',
+		    'name' => 'aman',
 		    'phone_no' => '6353479965',
-		    'email' => 'rohan@gmail.com',
+		    'email' => 'aman@gmail.com',
 		    'password' => bcrypt('password124'),
 	    ]);
     }

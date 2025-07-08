@@ -21,9 +21,11 @@ class UserFactory extends Factory {
 	 *
 	 * @return array<string, mixed>
 	 */
+
 	public function definition(): array {
 		return [
 			'name'              => fake()->name(),
+			'phone_no'          => fake()->numerify('##########'),
 			'email'             => fake()->unique()->safeEmail(),
 			'email_verified_at' => now(),
 			'password'          => static::$password ??= Hash::make('password'),

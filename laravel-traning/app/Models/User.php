@@ -1,20 +1,25 @@
 <?php
 
 namespace App\Models;
-use Attribute;
+
+
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable {
 
 	use HasFactory;
+	//model
 	protected $fillable = [
 		'name',
 		'phone_no',
 		'email',
+		'email_verified_at',
 		'password',
 	];
 
+	// name mutator and accessor
 	protected function name(): attribute {
 		return Attribute::make(
 			set: fn($value) => strtoupper($value),
@@ -22,15 +27,11 @@ class User extends Authenticatable {
 		);
 	}
 
-	protected function password(): Attribute {
-		return Attribute::make(
-			set: fn($value) => bcrypt($value),
-
-		);
-	}
-
+	//casts phone_no to string
 	protected $casts  = [
 		'phone_no' => 'string',
+		'email_verified_at' => 'datetime',
+		'password' => 'hashed',
 	];
 	protected $hidden = [
 		'password',
