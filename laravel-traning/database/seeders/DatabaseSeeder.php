@@ -11,14 +11,16 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
+	//seeding
     public function run(): void
     {
          User::factory()->count(10)->create();
 
 	    User::factory()->create([
 		    'name' => 'Test User',
-		    'phone_no' => fake()->phoneNumber(),
+		    'phone_no' => fake()->numerify('##########'),
 		    'email' => 'test@email.com',
+		    'email_verified_at' => now(),
 	    ]);
     }
 }
