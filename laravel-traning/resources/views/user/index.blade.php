@@ -7,17 +7,6 @@
 				<h2 class="mb-2">User Registration</h2>
 				<form id="userForm" method="post" action="{{ route('user.store') }}">
 				<form method="post" action="{{ route('user.store') }}" class="p-4 bg-white shadow-sm rounded">
-					@push('styles')
-						<style>
-							.form-control {
-								border: 2px solid #ced4da;
-								border-radius: 0.25rem;
-								padding: 0.375rem 0.75rem;
-								font-size: 1rem;
-								line-height: 1.5;
-							}
-						</style>
-					@endpush
 					@csrf
 					<div>
 						<label for="username" class="form-label fw-bold">Username:</label>
@@ -80,4 +69,15 @@
 			this.submit(); // Submit the form programmatically
 		});
 	</script>
+@endpush
+@push('styles')
+	<style>
+		.form-control {
+			border: 2px solid #ced4da;
+			border-radius: 0.25rem;
+			padding: 0.375rem 0.75rem;
+			font-size: 1rem;
+			line-height: 1.5;
+		}
+	</style>
 @endpush
