@@ -49,6 +49,12 @@
 							label="Password"
 							placeholder="Enter password"
 					/>
+					<x-form.input
+							type="text"
+							name="address"
+							label="Address"
+							placeholder="Enter address"
+					/>
 
 
 					<div class="d-grid">

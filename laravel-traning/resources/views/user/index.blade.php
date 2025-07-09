@@ -16,6 +16,7 @@
 				<th>Username</th>
 				<th>Phone No</th>
 				<th>Email</th>
+				<th>Address</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -24,6 +25,7 @@
 					<td>{{ $user->name }}</td>
 					<td>{{ $user->phone_no }}</td>
 					<td>{{ $user->email }}</td>
+					<td>{{ $user->address }}</td>
 				</tr>
 			@endforeach
 			</tbody>

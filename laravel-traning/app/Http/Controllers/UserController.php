@@ -28,6 +28,7 @@ class UserController extends Controller {
 			'username' => 'required|string|max:255',
 			'phone_no' => 'nullable|string|max:20',
 			'email' => 'required|email|unique:users,email',
+			'address' => 'nullable|string|max:255',
 			'password' => 'required|min:6',
 		]);
 
@@ -35,6 +36,7 @@ class UserController extends Controller {
 			'name' => $validated['username'],
 			'phone_no' => $validated['phone_no'],
 			'email' => $validated['email'],
+			'address' => $validated['address'],
 			'password' => bcrypt($validated['password']),
 		]);
 
