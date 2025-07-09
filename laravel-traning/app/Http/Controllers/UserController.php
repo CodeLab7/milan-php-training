@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class UserController extends Controller {
 
 
-	public function single($id) {
-		return view('user.single', ['id' => $id]);
+	public function single(user $user) {
+		return view('user.single', compact('user'));
 	}
 
 	public function index() {

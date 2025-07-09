@@ -5,7 +5,6 @@
 		<div class="row">
 			<div class="col-8" >
 				<h2 class="mb-2">User Registration</h2>
-				<form id="userForm" method="post" action="{{ route('user.store') }}">
 				<form method="post" action="{{ route('user.store') }}" class="p-4 bg-white shadow-sm rounded">
 
 					@csrf
@@ -44,21 +43,10 @@
 					<div class="d-grid">
 						<button type="submit" class="btn btn-primary py-2" value="submit">Submit</button>
 					</div>
-
-				</form>
 				</form>
 
-				<br>
-				<div class="d-grid">
-					<button type="submit"   form="userForm">Submit outside</button>
 				</div>
 			</div>
-
-
-			<div class="col-4">
-				form  list here
-			</div>
-
 		</div>
 	</div>
 
