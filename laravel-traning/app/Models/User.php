@@ -24,6 +24,11 @@ class User extends Authenticatable
         'password',
         'address',
     ];
+	//create a one-to-one relationship with the Profile model
+	public function profile()
+	{
+		return $this->hasOne(Profile::class);
+	}
 
     /**
      * The attributes that should be hidden for serialization.

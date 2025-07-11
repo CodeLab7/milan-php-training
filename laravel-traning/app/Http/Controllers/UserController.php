@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -38,6 +39,12 @@ class UserController extends Controller {
 			'email' => $validated['email'],
 			'address' => $validated['address'],
 			'password' => bcrypt($validated['password']),
+		]);
+
+		profile::create([
+			'user_id' => User::where('email', $validated['email'])->first()->id,
+			'phone' => $validated['phone_no'],
+			'address' => $validated['address'],
 		]);
 
 		return redirect()->route('user.index')->with('success', 'User created successfully!');
