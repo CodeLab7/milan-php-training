@@ -41,9 +41,9 @@ class UserController extends Controller {
 			'address',
 			'password',
 		]);
-		$user = User::create($storable);
+		$user     = User::create($storable);
 
-		$profile_data  = $request->only([
+		$profile_data            = $request->only([
 			'phone_no',
 			'address',
 		]);
@@ -71,7 +71,7 @@ class UserController extends Controller {
 			'address'  => $validated['address'],
 		]);
 
-		$profile_data  = $request->only([
+		$profile_data            = $request->only([
 			'phone_no',
 			'address',
 		]);
@@ -83,8 +83,7 @@ class UserController extends Controller {
 		                 ->with('success', 'User updated successfully!');
 	}
 
-	public function destroy(User $user)
-	{
+	public function destroy(User $user) {
 		$user->delete();
 		Profile::where('user_id', $user->id)->delete();
 
