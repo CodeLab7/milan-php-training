@@ -14,6 +14,7 @@ Route::prefix('users')
 	     Route::get('/', 'index')->name('index');
 	     Route::post('/store', 'store')->name('store');
 	     Route::get('/create/form', 'create')->name('create');
+	     Route::get('/{user}/single', 'single')->name('single');
 	     Route::put('/{user}/update', 'update')->name('update');
 	     Route::patch('/{user}/update/status', 'updateStatus')->name('updateStatus');
 	     Route::delete('/{user}/delete', 'destroy')->name('destroy');
