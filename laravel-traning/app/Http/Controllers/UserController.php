@@ -27,15 +27,15 @@ class UserController extends Controller {
 	public function store(Request $request) {
 
 		$request->validate([
-			'username' => 'required|string|max:255',
-			'phone_no' => 'nullable|string|max:20',
+			'name'     => 'required|string|max:255',
+			'phone_no' => 'nullable|string|max:15',
 			'email'    => 'required|email|unique:users,email',
 			'address'  => 'nullable|string|max:255',
 			'password' => 'required|min:6',
 		]);
 
 		$storable = $request->only([
-			'username',
+			'name',
 			'phone_no',
 			'email',
 			'address',
@@ -44,7 +44,7 @@ class UserController extends Controller {
 		$user     = User::create($storable);
 
 		$profile_data            = $request->only([
-			'phone_no',
+			'phone',
 			'address',
 		]);
 		$profile_data['user_id'] = $user->id;
@@ -58,26 +58,26 @@ class UserController extends Controller {
 	public function update(Request $request, User $user) {
 
 		$validated = $request->validate([
-			'username' => 'required|string|max:255',
-			'phone_no' => 'nullable|string|max:20',
+			'name'     => 'required|string|max:255',
+			'phone_no' => 'nullable|string|max:15',
 			'email'    => 'required|email|unique:users,email,' . $user->id,
 			'address'  => 'nullable|string|max:255',
 		]);
 
 		$user->update([
-			'name'     => $validated['username'],
+			'name'     => $validated['name'],
 			'phone_no' => $validated['phone_no'],
 			'email'    => $validated['email'],
 			'address'  => $validated['address'],
 		]);
 
 		$profile_data            = $request->only([
-			'phone_no',
+			'phone',
 			'address',
 		]);
 		$profile_data['user_id'] = $user->id;
 
-		profile::updaetorcreate($profile_data);
+		profile::UpdateOrCreate($profile_data);
 
 		return redirect()->route('user.index')
 		                 ->with('success', 'User updated successfully!');

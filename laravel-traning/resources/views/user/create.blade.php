@@ -23,8 +23,8 @@
 					@endif
 					<x-form.input
 							type="text"
-							name="username"
-							label="Username"
+							name="name"
+							label="Name"
 							placeholder="Enter username"
 					/>
 

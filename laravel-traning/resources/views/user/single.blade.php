@@ -10,7 +10,7 @@
 				<ul class="list-group">
 
 					<li class="list-group-item">
-						<strong>Username:</strong> {{ $user->name }}
+						<strong>Name:</strong> {{ $user->name }}
 					</li>
 					<li class="list-group-item">
 						<strong>Phone No:</strong> {{ $user->phone_no }}
@@ -42,9 +42,9 @@
 					@endif
 					<x-form.input
 							type="text"
-							name="username"
-							label="Username"
-							value="{{ old('username', $user->name) }}"
+							name="name"
+							label="Name"
+							value="{{ old('name', $user->name) }}"
 							placeholder="Enter username"
 					/>
 

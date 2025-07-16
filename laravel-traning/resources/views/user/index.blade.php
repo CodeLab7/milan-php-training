@@ -13,7 +13,7 @@
 
 			<thead>
 			<tr>
-				<th>Username</th>
+				<th>Name</th>
 				<th>Phone No</th>
 				<th>Email</th>
 				<th>Address</th>
