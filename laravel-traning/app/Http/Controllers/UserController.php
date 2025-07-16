@@ -8,45 +8,87 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller {
 
-
-	public function single($id) {
-		return view('user.single', ['id' => $id]);
-	}
-	public function index()
-	{
+	public function index() {
+		/*$user = user::first();
+		dd($user);
+		return $user->toarray();*/
 		$users = User::all();
 		return view('user.index', compact('users'));
-
 	}
+
 	public function create() {
 		return view('user.create');
 	}
 
-	public function store(Request $request)
-	{
+	public function single(User $user) {
+		return view('user.single', compact('user'));
+	}
+
+	public function store(Request $request) {
+
+		$request->validate([
+			'username' => 'required|string|max:255',
+			'phone_no' => 'nullable|string|max:20',
+			'email'    => 'required|email|unique:users,email',
+			'address'  => 'nullable|string|max:255',
+			'password' => 'required|min:6',
+		]);
+
+		$storable = $request->only([
+			'username',
+			'phone_no',
+			'email',
+			'address',
+			'password',
+		]);
+		$user     = User::create($storable);
+
+		$profile_data            = $request->only([
+			'phone_no',
+			'address',
+		]);
+		$profile_data['user_id'] = $user->id;
+
+		profile::create($profile_data);
+
+		return redirect()->route('user.index')
+		                 ->with('success', 'User created successfully!');
+	}
+
+	public function update(Request $request, User $user) {
 
 		$validated = $request->validate([
 			'username' => 'required|string|max:255',
 			'phone_no' => 'nullable|string|max:20',
-			'email' => 'required|email|unique:users,email',
-			'address' => 'nullable|string|max:255',
-			'password' => 'required|min:6',
+			'email'    => 'required|email|unique:users,email,' . $user->id,
+			'address'  => 'nullable|string|max:255',
 		]);
 
-		User::create([
-			'name' => $validated['username'],
+		$user->update([
+			'name'     => $validated['username'],
 			'phone_no' => $validated['phone_no'],
-			'email' => $validated['email'],
-			'address' => $validated['address'],
-			'password' => bcrypt($validated['password']),
+			'email'    => $validated['email'],
+			'address'  => $validated['address'],
 		]);
 
-		profile::create([
-			'user_id' => User::where('email', $validated['email'])->first()->id,
-			'phone' => $validated['phone_no'],
-			'address' => $validated['address'],
+		$profile_data            = $request->only([
+			'phone_no',
+			'address',
 		]);
+		$profile_data['user_id'] = $user->id;
 
-		return redirect()->route('user.index')->with('success', 'User created successfully!');
+		profile::updaetorcreate($profile_data);
+
+		return redirect()->route('user.index')
+		                 ->with('success', 'User updated successfully!');
 	}
+
+	public function destroy(User $user) {
+		$user->delete();
+		Profile::where('user_id', $user->id)->delete();
+
+		return redirect()->route('user.index')
+		                 ->with('success', 'User deleted successfully!');
+	}
+
 }
