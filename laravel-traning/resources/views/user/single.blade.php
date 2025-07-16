@@ -10,7 +10,7 @@
 				<ul class="list-group">
 
 					<li class="list-group-item">
-						<strong>Username:</strong> {{ $user->name }}
+						<strong>Name:</strong> {{ $user->name }}
 					</li>
 					<li class="list-group-item">
 						<strong>Phone No:</strong> {{ $user->phone_no }}
@@ -21,6 +21,14 @@
 					<li class="list-group-item">
 						<strong>Address:</strong> {{ $user->address }}
 					</li>
+					<li class="list-group-item">
+						<strong>Profile Photo:</strong><br>
+						@if($user->profile_photo)
+							<img src="{{ asset('storage/uploads/'.$user->profile_photo) }}" width="60"/>
+						@else
+							No profile photo uploaded.
+						@endif
+					</li>
 				</ul>
 				<br>
 				<a href="{{ route('user.index') }}" class="main-content">Back to Users</a>
@@ -28,7 +36,7 @@
 
 			<div class="col-6">
 				<h2>Update User</h2>
-				<form id="userForm" method="post" action="{{ route('user.update', $user->id) }}" class="p-4 bg-white shadow-sm rounded">
+				<form id="userForm" method="post" action="{{ route('user.update', $user->id) }}" class="p-4 bg-white shadow-sm rounded" enctype="multipart/form-data">
 					@csrf
 					@method('PUT')
 					@if($errors->any())
@@ -42,10 +50,10 @@
 					@endif
 					<x-form.input
 							type="text"
-							name="username"
-							label="Username"
-							value="{{ old('username', $user->name) }}"
-							placeholder="Enter username"
+							name="name"
+							label="Name"
+							value="{{ old('name', $user->name) }}"
+							placeholder="Enter Name"
 					/>
 
 					<x-form.input
@@ -78,6 +86,12 @@
 							label="Address"
 							value="{{ old('address', $user->address) }}"
 							placeholder="Enter address"
+					/>
+					<x-form.input
+							type="file"
+							name="profile_photo"
+							label="Profile photo (leave blank to keep current)"
+							placeholder="Upload profile photo"
 					/>
 
 					<div class="d-grid">

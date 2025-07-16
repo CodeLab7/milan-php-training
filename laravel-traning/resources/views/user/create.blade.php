@@ -7,10 +7,7 @@
 		<div class="row">
 			<div class="col-8">
 				<h2 class="mb-2">User Registration</h2>
-
-
-				<form id="userForm" method="post" action="{{ route('user.store') }}" class="p-4 bg-white shadow-sm rounded">
-
+				<form id="userForm" method="post" action="{{ route('user.store') }}" class="p-4 bg-white shadow-sm rounded" enctype="multipart/form-data">
 					@csrf
 					@if($errors->any())
 						<div class="alert alert-danger">
@@ -23,9 +20,9 @@
 					@endif
 					<x-form.input
 							type="text"
-							name="username"
-							label="Username"
-							placeholder="Enter username"
+							name="name"
+							label="Name"
+							placeholder="Enter Name"
 					/>
 
 
@@ -54,6 +51,12 @@
 							name="address"
 							label="Address"
 							placeholder="Enter address"
+					/>
+					<x-form.input
+							type="file"
+							name="profile_photo"
+							label="Profile photo"
+							placeholder="Upload profile photo"
 					/>
 
 
