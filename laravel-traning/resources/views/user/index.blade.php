@@ -13,10 +13,11 @@
 
 			<thead>
 			<tr>
-				<th>Username</th>
+				<th>Name</th>
 				<th>Phone No</th>
 				<th>Email</th>
 				<th>Address</th>
+				<th>Profile Photo</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -26,6 +27,13 @@
 					<td>{{ $user->phone_no }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->address }}</td>
+					<td>
+						@if($user->profile_photo)
+							<img src="{{ asset('storage/uploads/'.$user->profile_photo) }}" width="60"/>
+						@else
+							No Photo
+						@endif
+					</td>
 				</tr>
 			@endforeach
 			</tbody>

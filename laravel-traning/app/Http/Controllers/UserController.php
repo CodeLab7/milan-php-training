@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller {
 
@@ -25,23 +26,30 @@ class UserController extends Controller {
 	}
 
 	public function store(Request $request) {
-
 		$request->validate([
-			'username' => 'required|string|max:255',
-			'phone_no' => 'nullable|string|max:20',
-			'email'    => 'required|email|unique:users,email',
-			'address'  => 'nullable|string|max:255',
-			'password' => 'required|min:6',
+			'name'          => 'required|string|max:255',
+			'phone_no'      => 'nullable|string|max:20',
+			'email'         => 'required|email|unique:users,email',
+			'address'       => 'nullable|string|max:255',
+			'password'      => 'required|min:6',
+			'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
 		]);
 
 		$storable = $request->only([
-			'username',
+			'name',
 			'phone_no',
 			'email',
 			'address',
 			'password',
 		]);
-		$user     = User::create($storable);
+		//profile photo create
+		if($request->hasFile('profile_photo')) {
+			$fileName = time() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
+			Storage::disk('public')->put('/uploads/' . $fileName, file_get_contents($request->file('profile_photo')));
+			$storable['profile_photo'] = $fileName;
+		}
+
+		$user = User::create($storable);
 
 		$profile_data            = $request->only([
 			'phone_no',
@@ -58,32 +66,50 @@ class UserController extends Controller {
 	public function update(Request $request, User $user) {
 
 		$validated = $request->validate([
-			'username' => 'required|string|max:255',
-			'phone_no' => 'nullable|string|max:20',
-			'email'    => 'required|email|unique:users,email,' . $user->id,
-			'address'  => 'nullable|string|max:255',
+			'name'          => 'required|string|max:255',
+			'phone_no'      => 'nullable|string|max:20',
+			'email'         => 'required|email|unique:users,email,' . $user->id,
+			'address'       => 'nullable|string|max:255',
+			'profile_photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:3000',
 		]);
-
+		//profile photo
+		if($request->hasFile('profile_photo')) {
+			if($user->profile_photo) {
+				Storage::delete('public/uploads/' . $user->profile_photo);
+			}
+			$fileName = time() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
+			/*$request->file('profile_photo')->move(public_path('uploads'), $fileName);*/
+			$request->file('profile_photo')->storeAs('/uploads', $fileName);
+			$validated['profile_photo'] = $fileName;
+		}
+		else {
+			$validated['profile_photo'] = $user->profile_photo;
+		}
 		$user->update([
-			'name'     => $validated['username'],
-			'phone_no' => $validated['phone_no'],
-			'email'    => $validated['email'],
-			'address'  => $validated['address'],
+			'name'          => $validated['name'],
+			'phone_no'      => $validated['phone_no'],
+			'email'         => $validated['email'],
+			'address'       => $validated['address'],
+			'password'      => bcrypt($request->input('password')),
+			'profile_photo' => $validated['profile_photo'] ?? $user->profile_photo,
 		]);
 
 		$profile_data            = $request->only([
 			'phone_no',
-			'address',
+			'address'
 		]);
 		$profile_data['user_id'] = $user->id;
 
-		profile::updaetorcreate($profile_data);
+		profile::updateOrCreate($profile_data);
 
 		return redirect()->route('user.index')
 		                 ->with('success', 'User updated successfully!');
 	}
 
 	public function destroy(User $user) {
+		if($user->profile_photo) {
+			Storage::delete('public/uploads/' . $user->profile_photo);
+		}
 		$user->delete();
 		Profile::where('user_id', $user->id)->delete();
 
