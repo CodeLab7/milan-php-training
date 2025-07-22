@@ -18,6 +18,7 @@
 				<th>Email</th>
 				<th>Address</th>
 				<th>Profile Photo</th>
+				<th>Download File</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -32,6 +33,15 @@
 							<img src="{{ asset('storage/uploads/'.$user->profile_photo) }}" width="60"/>
 						@else
 							No Photo
+						@endif
+					</td>
+					<td>
+						@if($user->profile_photo)
+							<a href="{{ route('user.download', $user->profile_photo) }}" class="btn btn-sm btn-primary">
+								Download
+							</a>
+						@else
+							N/A
 						@endif
 					</td>
 				</tr>

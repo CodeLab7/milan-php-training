@@ -74,12 +74,12 @@ class UserController extends Controller {
 		]);
 		//profile photo
 		if($request->hasFile('profile_photo')) {
-			if($user->profile_photo) {
-				Storage::delete('public/uploads/' . $user->profile_photo);
+			if($user->profile_photo && Storage::disk('public')->exists('/uploads/' . $user->profile_photo)) {
+				Storage::disk('public')->delete('/uploads/' . $user->profile_photo);
 			}
 			$fileName = time() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
 			/*$request->file('profile_photo')->move(public_path('uploads'), $fileName);*/
-			$request->file('profile_photo')->storeAs('/uploads', $fileName);
+			$request->file('profile_photo')->storeAs('/uploads/', $fileName, 'public');
 			$validated['profile_photo'] = $fileName;
 		}
 		else {
@@ -107,14 +107,30 @@ class UserController extends Controller {
 	}
 
 	public function destroy(User $user) {
-		if($user->profile_photo) {
-			Storage::delete('public/uploads/' . $user->profile_photo);
+		//user delete to delete profile photo
+		if($user->profile_photo && Storage::disk('public')->exists('/uploads/' . $user->profile_photo)) {
+			Storage::disk('public')->delete('/uploads/' . $user->profile_photo);
 		}
+		//profile delete but photo not delete
+		/*if($user->profile_photo) {
+			storage::delete('/uploads/' . $user->profile_photo);
+		}*/
 		$user->delete();
 		Profile::where('user_id', $user->id)->delete();
 
 		return redirect()->route('user.index')
 		                 ->with('success', 'User deleted successfully!');
+	}
+
+	//download file
+	public function download($filename) {
+		$path = '/uploads/' . $filename;
+
+		if(Storage::disk('public')->exists($path)) {
+			return Storage::disk('public')->download($path, $filename);
+		}
+
+		return back()->with('error', 'File not found.');
 	}
 
 }
