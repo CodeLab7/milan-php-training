@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\CheckUserAuth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,7 +11,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'dashboard'])
-     ->middleware(['auth', 'verified'])
+     ->middleware(CheckUserAuth::class)
      ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
