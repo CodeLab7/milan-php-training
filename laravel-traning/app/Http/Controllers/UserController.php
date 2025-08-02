@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\UserRegisteredMail;
 use App\Models\profile;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller {
@@ -58,6 +60,8 @@ class UserController extends Controller {
 		$profile_data['user_id'] = $user->id;
 
 		profile::create($profile_data);
+		//send mail
+		Mail::to($user->email)->send(new UserRegisteredMail($user));
 
 		return redirect()->route('user.index')
 		                 ->with('success', 'User created successfully!');
