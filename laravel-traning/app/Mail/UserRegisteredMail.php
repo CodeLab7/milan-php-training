@@ -18,9 +18,9 @@ class UserRegisteredMail extends Mailable {
 	 * Create a new message instance.
 	 */
 
-	public $user;
+	protected $user;
 
-	public function __construct(User $user) {
+	public function __construct($user) {
 		$this->user = $user;
 	}
 
@@ -38,9 +38,18 @@ class UserRegisteredMail extends Mailable {
 	 * Get the message content definition.
 	 */
 	public function content(): Content {
-		return new Content(
-			view: 'mails.user.register',
-		);
+		{
+			$details = [
+				'user'               => $this->user,
+				'customer_full_name' => 'Hello!' . $this->user->name . 'Customer',
+			];
+			return new Content(
+				view: 'mails.user.register',
+				with: [
+					'details' => $details,
+				]
+			);
+		}
 	}
 
 	/**

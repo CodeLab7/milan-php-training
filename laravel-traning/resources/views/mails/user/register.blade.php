@@ -39,32 +39,32 @@
 </head>
 <body>
 
-<p>Hello <strong>{{ $user->name }}</strong>,</p>
+<p>Hello <strong>{{$details['customer_full_name'] }}</strong>,</p>
 
 <p>Your registration was successful. Here are your details:</p>
 
 <table>
 	<tr>
 		<td><strong>Name:</strong></td>
-		<td>{{ $user->name }}</td>
+		<td>{{ $details['user']['name']  }}</td>
 	</tr>
 	<tr>
 		<td><strong>Email:</strong></td>
-		<td>{{ $user->email }}</td>
+		<td>{{ $details['user']['email']  }}</td>
 	</tr>
 	<tr>
 		<td><strong>Mobile:</strong></td>
-		<td>{{ $user->phone_no }}</td>
+		<td>{{ $details['user']['phone_no']  }}</td>
 	</tr>
 	<tr>
 		<td><strong>Address:</strong></td>
-		<td>{{ $user->address }}</td>
+		<td>{{ $details['user']['address']  }}</td>
 	</tr>
-	@if($user->profile_photo)
+	@if($details['user']['profile_photo'] )
 		<tr>
 			<td style="vertical-align: top;"><strong>Profile Photo:</strong></td>
 			<td>
-				<img src="{{ asset('storage/uploads/'.$user->profile_photo) }}" alt="Profile Photo"/>
+				<img src="{{ asset('storage/uploads/'.$details['user']['profile_photo'] ) }}" alt="Profile Photo"/>
 			</td>
 		</tr>
 	@endif
