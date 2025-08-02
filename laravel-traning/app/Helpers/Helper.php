@@ -2,6 +2,7 @@
 
 namespace App\Helpers;
 
+use Illuminate\Support\Arr;
 use Illuminate\Support\Number;
 
 class Helper {
@@ -13,12 +14,12 @@ class Helper {
 
 	//array map function to format storable data
 	public static function formatStorableData(array $storable): array {
-		foreach($storable as $key => $value) {
-			if(in_array($key, ['name'])) {
-				$storable[$key] = ucfirst(strtolower($value));
+		return Arr::map($storable, function ($value, $key) {
+			if($key === 'name') {
+				return ucfirst(strtolower($value));
 			}
-		}
-		return $storable;
+			return $value;
+		});
 	}
 
 }
