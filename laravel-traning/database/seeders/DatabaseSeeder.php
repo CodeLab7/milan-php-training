@@ -18,13 +18,9 @@ class DatabaseSeeder extends Seeder {
 			'name'     => 'Test User',
 			'phone_no' => fake()->phoneNumber(),
 			'email'    => 'test@email.com',
+			'password' => bcrypt('password123'),
 		]);
-		User::create([
-			'name'     => 'rohan ',
-			'phone_no' => '6353479965',
-			'email'    => 'rohan@email.com',
-			'password' => bcrypt('password124'),
-		]);
+
 	}
 
 }
