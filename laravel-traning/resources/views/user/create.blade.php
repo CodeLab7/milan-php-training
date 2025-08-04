@@ -25,7 +25,9 @@
 							type="text"
 							name="username"
 							label="Username"
+							id="name"
 							placeholder="Enter username"
+							value="{{ old('username') }}"
 					/>
 
 
