@@ -55,6 +55,19 @@
 							label="Address"
 							placeholder="Enter address"
 					/>
+					<x-form.input
+							type="text"
+							name="company_name"
+							label="Company Name"
+							placeholder="Enter company name"
+					/>
+
+					<x-form.input
+							type="text"
+							name="contact_name"
+							label="Contact Name"
+							placeholder="Enter contact name"
+					/>
 
 
 					<div class="d-grid">

@@ -17,6 +17,8 @@
 				<th>Phone No</th>
 				<th>Email</th>
 				<th>Address</th>
+				<th>Company Name</th>
+				<th>Contact Name</th>
 			</tr>
 			</thead>
 			<tbody>
@@ -26,6 +28,8 @@
 					<td>{{ $user->phone_no }}</td>
 					<td>{{ $user->email }}</td>
 					<td>{{ $user->address }}</td>
+					<td>{{ $user->profile->company_name ?? 'N/A'}}</td>
+					<td>{{ $user->profile->contact_name ?? 'N/A'}}</td>
 				</tr>
 			@endforeach
 			</tbody>
