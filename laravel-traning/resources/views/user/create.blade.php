@@ -6,7 +6,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-8">
-				<h2 class="mb-2">User Registration</h2>
+				<h2 class="mb-2">User Create</h2>
 				<form id="userForm" method="post" action="{{ route('user.store') }}" class="p-4 bg-white shadow-sm rounded" enctype="multipart/form-data">
 					@csrf
 					@if($errors->any())

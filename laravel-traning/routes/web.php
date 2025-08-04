@@ -1,10 +1,23 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+Route::get('/', function () {
+	return redirect()->route('login');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'dashboard'])
+     ->middleware(['auth', 'verified'])
+     ->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+	Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+	Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+	Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 // prefix group example
 Route::prefix('users')
@@ -21,29 +34,6 @@ Route::prefix('users')
 	     Route::delete('/{user}/delete', 'destroy')->name('destroy');
      });
 
-// URL Generation
-Route::view('home', 'home');
-Route::view('user', 'home');
+require __DIR__ . '/auth.php';
+require __DIR__ . '/training.php';
 
-Route::view('about', 'about');
-Route::view('about/{name}', 'about');
-
-/*// Open the Users page to view all users.
-Route::get('/users', [UserController::class, 'index']);
-//Show single user
-Route::get('/users/{id}', [UserController::class, 'show']);
-
-//Submit a form to create a new user.
-Route::post('/users', [UserController::class, 'store']);
-
-//Submit an edit form to update all user fields.
-Route::put('/users/{id}', [UserController::class, 'update']);
-
-//Just change the user's status (active/inactive) without editing full details.
-Route::patch('/users/{id}/status', [UserController::class, 'updateStatus']);
-
-//Permanently remove a user.
-Route::delete('/users/{id}', [UserController::class, 'destroy']);*/
-
-// Route Name
-Route::get('user/profile', fn() => 'User Profile')->name('profile');

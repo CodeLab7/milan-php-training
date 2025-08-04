@@ -16,8 +16,7 @@
 	</header>
 	<nav>
 		<a href="">Home</a>
-		<a href="">About</a>
-		<a href="">Post</a>
+		<a href="{{route('logout')}}" style="margin-left: auto">Logout </a>
 	</nav>
 	<main>
 		<div class="main-content">
