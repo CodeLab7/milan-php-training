@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\helper;
 use App\Mail\UserRegisteredMail;
 use App\Models\profile;
 use App\Models\User;
@@ -20,7 +21,9 @@ class UserController extends Controller {
 	}
 
 	public function create() {
-		return view('user.create');
+		$registrationFees = Helper::renderCurrency(78, 'GBP');
+
+		return view('user.create', compact('registrationFees'));
 	}
 
 	public function single(User $user) {
@@ -44,6 +47,8 @@ class UserController extends Controller {
 			'address',
 			'password',
 		]);
+		//array map
+		$storable = Helper::formatStorableData($storable);
 		//profile photo create
 		if($request->hasFile('profile_photo')) {
 			$fileName = time() . '.' . $request->file('profile_photo')->getClientOriginalExtension();
@@ -52,7 +57,7 @@ class UserController extends Controller {
 		}
 
 		$user = User::create($storable);
-
+		//profile photo create
 		$profile_data            = $request->only([
 			'phone_no',
 			'address',

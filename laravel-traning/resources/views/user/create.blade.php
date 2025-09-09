@@ -65,6 +65,11 @@
 					</div>
 				</form>
 
+				<div class="alert alert-info">
+					💰 Registration Fees: <strong>{{ $registrationFees }}</strong>
+					<p>Discount : {{Helper::renderCurrency(50)}}</p>
+				</div>
+
 				<br>
 			</div>
 
