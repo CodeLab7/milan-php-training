@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<body>
+<form action="./ajax.php" method="post" enctype="multipart/form-data">
+	Simple file upload
+	<input type="file" name="fileToUpload" id="fileToUpload">
+	<input type="submit" value="Upload File" name="submit">
+</form>
+
+</body>
+</html>
